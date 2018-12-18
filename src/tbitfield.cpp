@@ -60,17 +60,17 @@ int TBitField::GetLength(void) const // получить длину (к-во б�
   return bitLen;
 }
 
-void inline TBitField::SetBit(const int n) // установить бит
+void TBitField::SetBit(const int n) // установить бит
 {
   pMem[GetMemIndex(n)] |= GetMemMask(n);
 }
 
-void inline TBitField::ClrBit(const int n) // очистить бит
+void TBitField::ClrBit(const int n) // очистить бит
 {
   pMem[GetMemIndex(n)] &= ~GetMemMask(n);
 }
 
-int inline TBitField::GetBit(const int n) const // получить значение бита
+int TBitField::GetBit(const int n) const // получить значение бита
 {
   return (pMem[GetMemIndex(n)] & GetMemMask(n)) != 0;
 }
