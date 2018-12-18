@@ -309,3 +309,73 @@ TEST(TBitField, bitfields_with_different_bits_are_not_equal)
 
   EXPECT_NE(bf1, bf2);
 }
+
+TEST(TBitField, compare_bitfields_of_non_equal_size)
+{
+  const int size = 2;
+  TBitField bf1(size), bf2(size + 1);
+
+  EXPECT_EQ(bf1 == bf2, 0);
+}
+
+//#define TIME_TEST
+#ifdef TIME_TEST
+
+TEST(TBitField, milion_size_bitfield_negatation_time_test)
+{
+	const int N = 1000000;
+	TBitField bf(N);
+	~bf;
+}
+
+TEST(TBitField, 10milion_size_bitfield_negatation_time_test)
+{
+	const int N = 10000000;
+	TBitField bf(N);
+	~bf;
+}
+
+TEST(TBitField, 100milion_size_bitfield_negatation_time_test)
+{
+	const int N = 100000000;
+	TBitField bf(N);
+	~bf;
+}
+
+TEST(TBitField, bilion_size_bitfield_negatation_time_test)
+{
+	const int N = 1000000000;
+	TBitField bf(N);
+	~bf;
+}
+
+TEST(TBitField, milion_size_bitfield_or_time_test)
+{
+	const int N = 1000000;
+	TBitField bf1(N), bf2(N);
+	bf1 | bf2;
+}
+
+TEST(TBitField, 10milion_size_bitfield_or_time_test)
+{
+	const int N = 10000000;
+	TBitField bf1(N), bf2(N);
+	bf1 | bf2;
+}
+
+TEST(TBitField, 100milion_size_bitfield_or_time_test)
+{
+	const int N = 100000000;
+	TBitField bf1(N), bf2(N);
+	bf1 | bf2;
+}
+
+
+TEST(TBitField, bilion_size_bitfield_or_time_test)
+{
+	const int N = 1000000000;
+	TBitField bf1(N), bf2(N);
+	bf1 | bf2;
+}
+#endif
+

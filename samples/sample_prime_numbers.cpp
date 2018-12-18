@@ -19,6 +19,15 @@ int main()
   int n, m, k, count;
 
   setlocale(LC_ALL, "Russian");
+  int l;
+  cout << "Проверка ввода" << endl;
+  cout << "Введите длину" << endl;
+  cin >> l;
+  TBitField test(l);
+  cout << "Введите битовое поле" << endl;
+  cin >> test;
+  cout << test << endl;
+
   cout << "Тестирование программ поддержки битового поля" << endl;
   cout << "             Решето Эратосфена" << endl;
   cout << "Введите верхнюю границу целых значений - ";
