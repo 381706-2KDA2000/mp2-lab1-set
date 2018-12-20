@@ -120,21 +120,21 @@ TBitField TBitField::operator|(const TBitField &bf) // операция "или"
 {
   if (bitLen >= bf.bitLen)
   {
-    TBitField ResField(bitLen);
+    TBitField resField(bitLen);
     for (int i = 0; i < memLen; i++)
-      ResField.pMem[i] = pMem[i] | bf.pMem[i];
+      resField.pMem[i] = pMem[i] | bf.pMem[i];
     for (int i = bf.memLen; i < memLen; i++)
-      ResField.pMem[i] = pMem[i];
-    return ResField;
+      resField.pMem[i] = pMem[i];
+    return resField;
   }
   else
   {
-    TBitField ResField(bf.bitLen);
+    TBitField resField(bf.bitLen);
     for (int i = 0; i < memLen; i++)
-      ResField.pMem[i] = pMem[i] | bf.pMem[i];
+      resField.pMem[i] = pMem[i] | bf.pMem[i];
     for (int i = memLen; i < bf.memLen; i++)
-      ResField.pMem[i] = bf.pMem[i];
-    return ResField;
+      resField.pMem[i] = bf.pMem[i];
+    return resField;
   }
 
 }
@@ -143,33 +143,33 @@ TBitField TBitField::operator&(const TBitField &bf) // операция "и"
 {
   if (bitLen >= bf.bitLen)
   {
-    TBitField ResField(bitLen);
+    TBitField resField(bitLen);
     for (int i = 0; i < bf.memLen; i++)
-      ResField.pMem[i] = pMem[i] & bf.pMem[i];
+      resField.pMem[i] = pMem[i] & bf.pMem[i];
     for (int i = bf.memLen; i < memLen; i++)
-      ResField.pMem[i] = 0;
-    return ResField;
+      resField.pMem[i] = 0;
+    return resField;
   }
   else
   {
-    TBitField ResField(bf.bitLen);
+    TBitField resField(bf.bitLen);
     for (int i = 0; i < memLen; i++)
-      ResField.pMem[i] = pMem[i] & bf.pMem[i];
+      resField.pMem[i] = pMem[i] & bf.pMem[i];
     for (int i = memLen; i < bf.memLen; i++)
-      ResField.pMem[i] = 0;
-    return ResField;
+      resField.pMem[i] = 0;
+    return resField;
   }
 }
 
 TBitField TBitField::operator~(void) // отрицание
 {
-  TBitField ResField(bitLen);
+  TBitField resField(bitLen);
   int i;
   TELEM buf = ~((TELEM)0);
   for (i = 0; i < memLen; i++)
-    ResField.pMem[i] = ~pMem[i];
-  ResField.pMem[memLen - 1] &= buf >> (memLen * sizeof(TELEM) * 8 - bitLen);
-  return ResField;
+    resField.pMem[i] = ~pMem[i];
+  resField.pMem[memLen - 1] &= buf >> (memLen * sizeof(TELEM) * 8 - bitLen);
+  return resField;
 }
 
 // ввод/вывод
